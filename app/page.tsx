@@ -15,6 +15,7 @@ import SearchFilterBottom from '@/components/elements/SearchFilterBottom'
 import SwiperGroup8Slider from '@/components/slider/SwiperGroup8Slider'
 import TopCategory1 from "@/components/sections/TopCategory1"
 import OurFeatured1 from "@/components/sections/OurFeatured1"
+import FlightSearch from "../components/FlightSearch"
 export default function Home() {
 
     return (
@@ -28,7 +29,8 @@ export default function Home() {
 								<h6 className="heading-6-medium">We Provide Our Best Facilities For You</h6>
 							</div>
 							<div className="box-search-advance box-search-advance-3 background-card wow fadeInUp">
-								<SearchFilterBottom />
+								{/* <SearchFilterBottom /> */}
+								<FlightSearch />
 							</div>
 						</div>
 					</section>
