@@ -1,141 +1,174 @@
 'use client'
-
 import React, { useState } from 'react';
+import { ArrowLeftRight } from 'lucide-react';
 import styles from '../style/FlightSearch.module.css';
 
 const FlightSearch = () => {
   const [tripType, setTripType] = useState('oneWay');
-
-  const navigationItems = [
-    { icon: "✈️", label: "Flights", active: true },
-    { icon: "🏨", label: "Hotels" },
-    { icon: "🏠", label: "Homestays & Villas" },
-    { icon: "🎁", label: "Holiday Packages" },
-    { icon: "🚆", label: "Trains" },
-    { icon: "🚌", label: "Buses" },
-    { icon: "🚕", label: "Cabs" },
-    { icon: "💳", label: "Forex Card & Currency" },
-    { icon: "🛡️", label: "Travel Insurance" }
-  ];
-
-  const fareTypes = [
-    { id: 'regular', label: 'Regular', subtext: 'Regular fares', active: true },
-    { id: 'student', label: 'Student', subtext: 'Extra discounts/baggage' },
-    { id: 'senior', label: 'Senior Citizen', subtext: 'Up to ₹ 600 off' },
-    { id: 'armed', label: 'Armed Forces', subtext: 'Up to ₹ 600 off' },
-    { id: 'medical', label: 'Doctor and Nurses', subtext: 'Up to ₹ 600 off' }
-  ];
+  const [selectedFare, setSelectedFare] = useState('regular');
 
   return (
-    <div className={styles.container}>
-      {/* Navigation Tabs */}
-      <div className={styles.navTabs}>
-        {navigationItems.map((item, index) => (
-          <div key={index} className={`${styles.navItem} ${item.active ? styles.active : ''}`}>
-            <span className={styles.navIcon}>{item.icon}</span>
-            <span className={styles.navLabel}>{item.label}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Trip Type Selection */}
-      <div className={styles.tripTypes}>
-        <label className={styles.radioLabel}>
-          <input
-            type="radio"
-            name="tripType"
-            value="oneWay"
-            checked={tripType === 'oneWay'}
-            onChange={(e) => setTripType(e.target.value)}
-          />
-          <span>One Way</span>
-        </label>
-        <label className={styles.radioLabel}>
-          <input
-            type="radio"
-            name="tripType"
-            value="roundTrip"
-            checked={tripType === 'roundTrip'}
-            onChange={(e) => setTripType(e.target.value)}
-          />
-          <span>Round Trip</span>
-        </label>
-        <label className={styles.radioLabel}>
-          <input
-            type="radio"
-            name="tripType"
-            value="multiCity"
-            checked={tripType === 'multiCity'}
-            onChange={(e) => setTripType(e.target.value)}
-          />
-          <span>Multi City</span>
-        </label>
-      </div>
-
-      {/* Flight Search Form */}
-      <div className={styles.searchForm}>
-        {/* From */}
-        <div className={styles.formField}>
-          <label className={styles.fieldLabel}>From</label>
-          <div className={styles.fieldValue}>Jaipur</div>
-          <div className={styles.fieldSubtext}>JAI, Jaipur Airport India</div>
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <img src="/makemytrip-logo.png" alt="Easy2trip" className={styles.logo} />
+        <div className={styles.headerRight}>
+          <div>List Your Property</div>
+          <div>Introducing myBiz</div>
+          <div>My Trips</div>
+          <div>Hi Traveler</div>
+          <div>IN | ENG</div>
+          <div>INR</div>
         </div>
+      </header>
 
-        {/* Swap Icon */}
-        <div className={styles.swapIcon}>
-          ⇄
-        </div>
-
-        {/* To */}
-        <div className={styles.formField}>
-          <label className={styles.fieldLabel}>To</label>
-          <div className={styles.fieldValue}>Mumbai</div>
-          <div className={styles.fieldSubtext}>BOM, Chhatrapati Shivaji International</div>
-        </div>
-
-        {/* Departure */}
-        <div className={styles.formField}>
-          <label className={styles.fieldLabel}>Departure</label>
-          <div className={styles.fieldValue}>21</div>
-          <div className={styles.fieldSubtext}>Jan'25, Tuesday</div>
-        </div>
-
-        {/* Travelers & Class */}
-        <div className={styles.formField}>
-          <label className={styles.fieldLabel}>Travellers & Class</label>
-          <div className={styles.fieldValue}>1 Traveller</div>
-          <div className={styles.fieldSubtext}>Economy/Premium Economy</div>
-        </div>
-      </div>
-
-      {/* Fare Types */}
-      <div className={styles.fareTypes}>
-        <div className={styles.fareHeader}>
-          <span className={styles.savingsTag}>EXTRA SAVINGS</span>
-          <span>Select a special fare</span>
-        </div>
-        <div className={styles.fareOptions}>
-          {fareTypes.map((fare) => (
-            <label key={fare.id} className={`${styles.fareOption} ${fare.active ? styles.active : ''}`}>
-              <input
-                type="radio"
-                name="fareType"
-                value={fare.id}
-                checked={fare.active}
+      <main className={styles.mainCard}>
+        {/* Navigation */}
+        <nav className={styles.nav}>
+          {[
+            { id: 'flights', label: 'Flights', active: true },
+            { id: 'hotels', label: 'Hotels' },
+            { id: 'homestays', label: 'Homestays\n& Villas' },
+            { id: 'holiday', label: 'Holiday\nPackages' },
+            { id: 'trains', label: 'Trains' },
+            { id: 'buses', label: 'Buses' },
+            { id: 'cabs', label: 'Cabs' },
+            { id: 'forex', label: 'Forex Card\n& Currency' },
+            { id: 'insurance', label: 'Travel\nInsurance' }
+          ].map((item) => (
+            <div 
+              key={item.id} 
+              className={`${styles.navItem} ${item.active ? styles.active : ''}`}
+            >
+              <img 
+                src={`/icons/${item.id}.svg`} 
+                alt={item.label} 
+                className={styles.navIcon} 
               />
-              <div className={styles.fareText}>
-                <div className={styles.fareLabel}>{fare.label}</div>
-                <div className={styles.fareSubtext}>{fare.subtext}</div>
-              </div>
-            </label>
+              <span className={styles.navLabel}>{item.label}</span>
+            </div>
           ))}
-        </div>
-      </div>
+        </nav>
 
-      {/* Search Button */}
-      <div className={styles.searchButton}>
-        <button>SEARCH</button>
-      </div>
+        <div className={styles.searchContainer}>
+          {/* Trip Types */}
+          <div className={styles.tripTypeContainer}>
+            <div className={styles.tripTypes}>
+              <label className={styles.tripType}>
+                <input
+                  type="radio"
+                  checked={tripType === 'oneWay'}
+                  onChange={() => setTripType('oneWay')}
+                  name="tripType"
+                />
+                <span>One Way</span>
+              </label>
+              <label className={styles.tripType}>
+                <input
+                  type="radio"
+                  checked={tripType === 'roundTrip'}
+                  onChange={() => setTripType('roundTrip')}
+                  name="tripType"
+                />
+                <span>Round Trip</span>
+              </label>
+              <label className={styles.tripType}>
+                <input
+                  type="radio"
+                  checked={tripType === 'multiCity'}
+                  onChange={() => setTripType('multiCity')}
+                  name="tripType"
+                />
+                <span>Multi City</span>
+              </label>
+            </div>
+            <span className={styles.bookingTypeText}>
+              Book International and Domestic Flights
+            </span>
+          </div>
+
+          {/* Search Form */}
+          <div className={styles.searchForm}>
+            <div className={styles.formField}>
+              <div className={styles.fieldLabel}>From</div>
+              <div className={styles.fieldValue}>Jaipur</div>
+              <div className={styles.fieldSubtext}>JAI, Jaipur Airport India</div>
+            </div>
+
+            <div className={styles.formField}>
+              <button className={styles.swapButton}>
+                <ArrowLeftRight size={16} />
+              </button>
+              <div className={styles.fieldLabel}>To</div>
+              <div className={styles.fieldValue}>Mumbai</div>
+              <div className={styles.fieldSubtext}>BOM, Chhatrapati Shivaji Internation...</div>
+            </div>
+
+            <div className={styles.formField}>
+              <div className={styles.fieldLabel}>Departure</div>
+              <div className={styles.fieldValue}>21</div>
+              <div className={styles.fieldSubtext}>Jan'25, Tuesday</div>
+            </div>
+
+            <div className={styles.formField}>
+              <div className={styles.fieldLabel}>Return</div>
+              <div className={styles.fieldSubtext}>
+                Tap to add a return date for bigger discounts
+              </div>
+            </div>
+
+            <div className={styles.formField}>
+              <div className={styles.fieldLabel}>Travellers & Class</div>
+              <div className={styles.fieldValue}>1</div>
+              <div className={styles.fieldSubtext}>Economy/Premium Economy</div>
+            </div>
+          </div>
+
+          {/* Fare Selection */}
+          <div className={styles.fareSection}>
+            <div className={styles.fareHeader}>
+              <span>Select a special fare</span>
+              <span className={styles.extraSavings}>EXTRA SAVINGS</span>
+            </div>
+            <div className={styles.fareGrid}>
+              {[
+                { id: 'regular', title: 'Regular', subtext: 'Regular fares' },
+                { id: 'student', title: 'Student', subtext: 'Extra discounts/baggage' },
+                { id: 'senior', title: 'Senior Citizen', subtext: 'Up to ₹ 600 off' },
+                { id: 'armed', title: 'Armed Forces', subtext: 'Up to ₹ 600 off' },
+                { id: 'medical', title: 'Doctor and Nurses', subtext: 'Up to ₹ 600 off' }
+              ].map((fare) => (
+                <div
+                  key={fare.id}
+                  className={`${styles.fareOption} ${selectedFare === fare.id ? styles.selected : ''}`}
+                  onClick={() => setSelectedFare(fare.id)}
+                >
+                  <div className={styles.fareRadio}>
+                    <input
+                      type="radio"
+                      checked={selectedFare === fare.id}
+                      onChange={() => setSelectedFare(fare.id)}
+                      name="fareType"
+                    />
+                    <span className={styles.fareTitle}>{fare.title}</span>
+                  </div>
+                  <div className={styles.fareSubtext}>{fare.subtext}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button className={styles.searchButton}>SEARCH</button>
+        </div>
+      </main>
+
+      {/* <div className={styles.bottomLinks}>
+        <div>Where2Go</div>
+        <div>
+          How2Go
+          <span className={styles.new}>new</span>
+        </div>
+        <div>MakeMyTrip ICICI Credit Card</div>
+      </div> */}
     </div>
   );
 };
