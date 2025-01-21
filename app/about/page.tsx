@@ -30,7 +30,7 @@ export default function About() {
 							<div className="row align-items-end">
 								<div className="col-lg-7 wow fadeInUp"> <span className="btn btn-brand-secondary"> <img className="mr-10" src="/assets/imgs/page/homepage9/real.svg" alt="Travile" />Resort Real Estate</span>
 									<h1 className="neutral-1000 mt-15 mb-15">
-										Welcome<span>to Travila </span>Travel  <span>booking system</span></h1>
+										Welcome<span>to Easy2trip </span>Travel  <span>booking system</span></h1>
 									<p className="text-xl-medium neutral-500">Make it easier for everyone to experience the world</p>
 								</div>
 								<div className="col-lg-5">

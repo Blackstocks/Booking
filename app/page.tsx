@@ -19,11 +19,15 @@ import FlightSearch from "../components/FlightSearch";
 export default function Home() {
   return (
     <>
-      
-		
-		<section>
-			<FlightSearch/>
-		</section>
+      <Layout headerStyle={1} footerStyle={1}>
+        <section>
+          <img
+            src="https://i.ibb.co/w7ZFKC2/Screenshot-2025-01-20-at-3-15-39-PM.png"
+            alt="Flight Search Background"
+            className="w-full h-auto object-cover"
+          />
+          {/* <FlightSearch/> */}
+        </section>
         <section className="section-box box-popular-destinations background-body">
           <div className="container">
             <div className="box-swiper box-swiper-pd mt-0 wow fadeInDown">
@@ -72,7 +76,7 @@ export default function Home() {
         {/* <Testimonials1 /> */}
         {/* <News1 /> */}
         <Subscriber1 />
-      
+      </Layout>
     </>
   );
 }

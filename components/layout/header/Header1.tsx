@@ -32,11 +32,14 @@ export default function Header1({
             <div className="header-left">
               <div className="header-logo">
                 <Link className="d-flex" href="/">
-                  <img
-                    className="light-mode"
-                    alt="Travila"
-                    src="/assets/imgs/template/logo.svg"
-                  />
+				<img
+  className="light-mode"
+  alt="Easy2trip"
+  src="https://i.ibb.co/Dfdh6YR/Screenshot-2025-01-20-at-3-27-59-PM.png"
+  width="250"
+  height="50"
+  margin-left="5"
+/>
                   <img
                     className="dark-mode"
                     alt="Travila"

@@ -6,7 +6,14 @@ export default function Footer1() {
                 <div className="container">
                     <div className="footer-top">
                         <div className="row align-items-center">
-                            <div className="col-md-4 text-center text-md-start"><Link className="d-inline-block" href="/"><img alt="Travila" src="/assets/imgs/template/logo-footer.svg" /></Link></div>
+                            <div className="col-md-4 text-center text-md-start"><Link className="d-inline-block" href="/"><img
+  className="light-mode"
+  alt="Easy2trip"
+  src="https://i.ibb.co/Dfdh6YR/Screenshot-2025-01-20-at-3-27-59-PM.png"
+  width="200"
+  height="50"
+  margin-left="5"
+/></Link></div>
                             <div className="col-md-8 text-center text-md-end">
                                 <div className="d-flex align-items-center justify-content-center justify-content-md-end"><Link className="text-md-medium need-help" href="/tel:1-800-222-8888">Need help? Call us</Link><Link className="heading-6 phone-support" href="/tel:1-800-222-8888">1-800-222-8888</Link></div>
                             </div>
